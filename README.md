@@ -35,3 +35,10 @@ Pivot Joint: Grey
 Motor Joint: Cyan
 
 EggE?: White
+
+
+# CONTROLS:
+
+Arrows: Move
+Zoom in: +
+Zoom out: -
