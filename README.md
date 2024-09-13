@@ -39,6 +39,8 @@ EggE?: White
 
 # CONTROLS:
 
-Arrows: Move
+Move: Arrows
+
 Zoom in: +
+
 Zoom out: -
