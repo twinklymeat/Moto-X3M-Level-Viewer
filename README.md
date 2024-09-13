@@ -24,6 +24,8 @@ Others: white
 
 FinishZone: Green
 
+Toggle Triggers: Yellow
+
 Barrels: Light Grey
 
 TNT: Brown
