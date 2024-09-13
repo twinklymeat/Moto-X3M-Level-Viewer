@@ -103,7 +103,7 @@ while True:
         elif objectHWName[objectListHW.index(v)] == "Tnt1":
             surface.fill((120,60,0,150))
         elif objectHWName[objectListHW.index(v)] == "BarrelE":
-            surface.fill((100,100,100))
+            surface.fill((200,200,200))
         else:
             surface.fill((255,0,255,100))
         SCREEN.blit(surface, rec)#(zoomV*(v[0] + moveV[0]),zoomV*(v[1] + moveV[1])))
