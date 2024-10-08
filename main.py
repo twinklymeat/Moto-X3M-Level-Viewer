@@ -1,6 +1,7 @@
 import json
 import codecs
 import pygame
+import turtle
 from math import *
 
 pygame.init()
@@ -10,6 +11,8 @@ def __main__():
     while True:
         try:
             name = input("File: ")
+            if not name.endswith(".json"):
+                name = name + ".json"
             file = codecs.open(name, encoding= "utf-8-sig")
             break
         except:
@@ -211,7 +214,7 @@ def __main__():
                 color = (255,0,255)
             elif objectHWName[objectListHW.index(v)] == "SignPillar":
                 color = (255,255,255)
-            elif objectHWName[objectListHW.index(v)] in ["PlankWipe0", "PlankCandy"]:
+            elif objectHWName[objectListHW.index(v)] in ["PlankWipe0", "PlankCandy", "PlankBone"]:
                 color = (150,80,0)
             elif "SpikeBall" in objectHWName[objectListHW.index(v)]:
                 color = (150,0,0)
@@ -262,26 +265,27 @@ def __main__():
                 
                 SCREEN.blit(vertex, [(v[0] + moveV[0])*zoomV - 1,(v[1] + moveV[1])*zoomV - 1])
                 if objectName[objectList.index(item)] == "frg.game.editor.objects::LandscapeShaper":
-                    pygame.draw.line(SCREEN,pygame.color.Color(255,0,0,255),[int(zoomV*(vOG[0] + moveV[0])),int((vOG[1]+moveV[1])*zoomV)],[int((v[0] + moveV[0])*zoomV), int((v[1] + moveV[1])*zoomV)])
+                    color = (255,0,0,255)
                 elif objectName[objectList.index(item)] == "frg.game.editor.objects::DynamicPather":
-                    pygame.draw.line(SCREEN,pygame.color.Color(0,255,0,255),[int(zoomV*(vOG[0] + moveV[0])),int((vOG[1]+moveV[1])*zoomV)],[int((v[0] + moveV[0])*zoomV), int((v[1] + moveV[1])*zoomV)])
+                    color = (0,255,0,255)
                 elif objectName[objectList.index(item)] == "frg.game.editor.objects::PillarPather":
-                    pygame.draw.line(SCREEN,pygame.color.Color(0,0,255,255),[int(zoomV*(vOG[0] + moveV[0])),int((vOG[1]+moveV[1])*zoomV)],[int((v[0] + moveV[0])*zoomV), int((v[1] + moveV[1])*zoomV)] )
+                    color = (0,0,255,255)
                 elif objectName[objectList.index(item)] == "frg.game.editor.objects::GroundPather":
-                    pygame.draw.line(SCREEN,pygame.color.Color(255,0,255,255),[int(zoomV*(vOG[0] + moveV[0])),int((vOG[1]+moveV[1])*zoomV)],[int((v[0] + moveV[0])*zoomV), int((v[1] + moveV[1])*zoomV)])
+                    color = (255,0,255,255)
                 elif objectName[objectList.index(item)] == "frg.game.editor.objects::MoverPather":
-                    pygame.draw.line(SCREEN,pygame.color.Color(100,255,255,100),[int(zoomV*(vOG[0] + moveV[0])),int((vOG[1]+moveV[1])*zoomV)],[int((v[0] + moveV[0])*zoomV), int((v[1] + moveV[1])*zoomV)])
+                    color = (100,255,255,100)
                 elif objectName[objectList.index(item)] == "frg.game.editor.objects::WaterShaper":
-                    pygame.draw.line(SCREEN,pygame.color.Color(0,0,255,100),[int(zoomV*(vOG[0] + moveV[0])),int((vOG[1]+moveV[1])*zoomV)],[int((v[0] + moveV[0])*zoomV), int((v[1] + moveV[1])*zoomV)])
+                    color = (0,0,255,100)
                 elif objectName[objectList.index(item)] == "frg.game.editor.objects::FinishShaper":
-                    pygame.draw.line(SCREEN,pygame.color.Color(0,255,0,100),[int(zoomV*(vOG[0] + moveV[0])),int((vOG[1]+moveV[1])*zoomV)],[int((v[0] + moveV[0])*zoomV), int((v[1] + moveV[1])*zoomV)])
+                    color = (0,255,0,100)
                 elif objectName[objectList.index(item)] == "frg.game.editor.objects::DevPather":
-                    pygame.draw.line(SCREEN,pygame.color.Color(255,255,255),[int(zoomV*(vOG[0] + moveV[0])),int((vOG[1]+moveV[1])*zoomV)],[int((v[0] + moveV[0])*zoomV), int((v[1] + moveV[1])*zoomV)])
+                    color = (255,255,255)
                 elif objectName[objectList.index(item)] == "frg.game.editor.objects::BonesPather":
-                    pygame.draw.line(SCREEN,pygame.color.Color(255,200,200),[int(zoomV*(vOG[0] + moveV[0])),int((vOG[1]+moveV[1])*zoomV)],[int((v[0] + moveV[0])*zoomV), int((v[1] + moveV[1])*zoomV)])
+                    color = (255,200,200)
                 else:
                     print(objectName[objectList.index(item)])
-                    pygame.draw.line(SCREEN,pygame.color.Color(255,255,255,255),[int(zoomV*(vOG[0] + moveV[0])),int((vOG[1]+moveV[1])*zoomV)],[int((v[0] + moveV[0])*zoomV), int((v[1] + moveV[1])*zoomV)])
+                    color = (255,255,255,255)
+                pygame.draw.line(SCREEN,color,[int(zoomV*(vOG[0] + moveV[0])),int((vOG[1]+moveV[1])*zoomV)],[int((v[0] + moveV[0])*zoomV), int((v[1] + moveV[1])*zoomV)])
                 vOG = v
         
         keys = pygame.key.get_pressed()
