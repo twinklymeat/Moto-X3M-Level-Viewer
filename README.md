@@ -39,8 +39,17 @@ EggE?: White
 
 # CONTROLS:
 
-Move: Arrows
+Arrows: Move
 
-Zoom in: +
+T: show/hide triggers
 
-Zoom out: -
+D: show/hide decorations
+
+Ctrl + D: toggle dev mode (not as fun as it sounds)
+
+C: show/hide checkpoint triggers
+
++/-: zoom in/out
+
+Ctrl + O: open a new file
+
