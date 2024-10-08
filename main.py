@@ -1,9 +1,8 @@
 import json
 import codecs
 import pygame
-import turtle
 from math import *
-
+import numpy
 pygame.init()
 
 
@@ -59,9 +58,23 @@ def __main__():
                         # print("X/Y",v["x"], v["y"])
                         localx = int(v["x"])
                         localy = int(v["y"])
-                        globalPos.append([localx + x, localy + y])
+                        rotation = i["params"]["rotation"]
+
+                        rotation = radians(rotation)
+                        
+                        cos_r = cos(rotation)
+                        sin_r = sin(rotation)
+                        arr = numpy.array([[cos_r, -sin_r],[sin_r, cos_r]])
+
+                        coords = numpy.array([localx,localy]).dot(arr.T)
+
+                        localx = coords[0]
+                        localy = coords[1]
+
+                        globalPos.append([localx + x, localy + y, i["params"]["rotation"]])
                     objectList.append(globalPos)
                     objectName.append(i["className"])
+                    objectList.append
                 except:
                     # print("H/W",i["params"]["height"], i["params"]["width"])
                     objectListHW.append((x,y,i["params"]["height"], i["params"]["width"],i["params"]["rotation"]))
@@ -70,30 +83,6 @@ def __main__():
                 # print("\n")
             return objectList, objectListHW, objectName, objectHWName
 
-
-        # def getObjects(layers):
-        #     for i in layers:
-        #         # print(i["className"])
-        #         x = int(i["params"]["x"])
-        #         y = int(i["params"]["y"])
-
-        #         # print(x,y)
-        #         globalPos = []
-        #         try: 
-        #             for v in i["params"]["vertices"]:
-        #                 # print("X/Y",v["x"], v["y"])
-        #                 localx = int(v["x"])
-        #                 localy = int(v["y"])
-        #                 globalPos.append([localx + x, localy + y])
-        #             objectList.append(globalPos)
-        #             objectName.append(i["className"])
-        #         except:
-        #             # print("H/W",i["params"]["height"], i["params"]["width"])
-        #             objectListHW.append((x,y,i["params"]["height"], i["params"]["width"],i["params"]["rotation"]))
-        #             objectHWName.append(i["className"])
-        #         # print(globalPos)
-        #         # print("\n")
-        #     return objectList, objectListHW, objectName, objectHWName
 
     decLayer = data["layers"][1]
     try:
@@ -285,7 +274,14 @@ def __main__():
                 else:
                     print(objectName[objectList.index(item)])
                     color = (255,255,255,255)
+                # if v[2] == 0:
                 pygame.draw.line(SCREEN,color,[int(zoomV*(vOG[0] + moveV[0])),int((vOG[1]+moveV[1])*zoomV)],[int((v[0] + moveV[0])*zoomV), int((v[1] + moveV[1])*zoomV)])
+                # else: 
+
+
+                
+                # if 
+                
                 vOG = v
         
         keys = pygame.key.get_pressed()
