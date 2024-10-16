@@ -231,6 +231,8 @@ def __main__():
 
 
         for item in objectList:
+            if len(item) == 0:
+                continue
             vOG = item[0]
             for v in item:
                 # print([(v[0] + moveV[0])*zoomV,(v[1] + moveV[1])*zoomV])
