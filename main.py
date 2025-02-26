@@ -321,10 +321,10 @@ def __main__():
                 quit()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_EQUALS:
-                    print("+")
+                    # print("+")
                     zoomV = zoomV * 2
                 if event.key == pygame.K_MINUS:
-                    print("-")
+                    # print("-")
                     zoomV = zoomV * .5
                 if event.key == pygame.K_t:
                     if showTriggers:
