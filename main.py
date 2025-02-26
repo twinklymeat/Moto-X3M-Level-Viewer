@@ -1,8 +1,21 @@
+import os
 import json
 import codecs
-import pygame
 from math import *
-import numpy
+from pathlib import Path
+
+try:
+    import pygame
+except:
+    os.system("pip install pygame")
+    import pygame
+try:
+    import numpy
+except:
+    os.system("pip install numpy")
+    import numpy
+
+
 pygame.init()
 
 
@@ -12,7 +25,7 @@ def __main__():
             name = input("File: ")
             if not name.endswith(".json"):
                 name = name + ".json"
-            file = codecs.open(name, encoding= "utf-8-sig")
+            file = codecs.open(Path(name), encoding= "utf-8-sig")
             break
         except:
             pass
