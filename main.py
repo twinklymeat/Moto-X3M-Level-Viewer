@@ -216,7 +216,7 @@ def __main__():
                 color = (255,0,255)
             elif objectHWName[objectListHW.index(v)] == "SignPillar":
                 color = (255,255,255)
-            elif objectHWName[objectListHW.index(v)] in ["PlankWipe0", "PlankCandy", "PlankBone"]:
+            elif objectHWName[objectListHW.index(v)] in ["PlankWipe0", "PlankCandy", "PlankBone", "Plank0"]:
                 color = (150,80,0)
             elif "SpikeBall" in objectHWName[objectListHW.index(v)]:
                 color = (150,0,0)
