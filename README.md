@@ -85,14 +85,8 @@ Make sure you have python installed on your computer
 use the following commands
 ```bash
 git clone https://github.com/twinklymeat/Moto-X3M-Level-Viewer.git
-```
-```bash
 cd Moto-X3M-Level-Viewer
-```
-```bash
 python3 download.py
-```
-```bash
 python3 main.py
 ```
 
@@ -102,19 +96,15 @@ python3 main.py
 
 just download the latest release and run main.py, 
 
-But if u want to be fancy with it:
-
 ```bash
 git clone https://github.com/twinklymeat/Moto-X3M-Level-Viewer.git
-```
-```bash
 cd Moto-X3M-Level-Viewer
-```
-```bash
-download.py
-```
-```bash
-main.py
+python download.py
+python main.py
 ```
 
+If it throws an error for missing modules run 
+```bash
+pip install pygame
+```
 
