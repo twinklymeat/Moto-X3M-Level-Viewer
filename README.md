@@ -108,3 +108,13 @@ If it throws an error for missing modules run
 pip install pygame
 ```
 
+# How ID's Work
+
+The game links triggers and other objects together using ID numbers. 
+
+If the id number for a trigger and an actionable object then the trigger will activate that object. 
+
+An ID of 0 for a trigger will make potato man go 'woooo' or smthn
+
+any other id number will be linked to an object
+
