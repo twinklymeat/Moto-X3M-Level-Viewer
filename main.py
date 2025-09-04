@@ -18,6 +18,7 @@ except:
 
 pygame.init()
 
+font = pygame.font.Font(None, 20)
 
 def __main__():
     while True:
@@ -58,6 +59,8 @@ def __main__():
 
     objectName = []
     objectHWName = []
+    objectID = []
+    objectIDHW = []
     def getObjects(layers):
             for i in layers:
                 # print(i["className"])
@@ -87,11 +90,18 @@ def __main__():
                         globalPos.append([localx + x, localy + y, i["params"]["rotation"]])
                     objectList.append(globalPos)
                     objectName.append(i["className"])
-                    objectList.append
+                    try:
+                        objectID.append(i['params']['id'])
+                    except:
+                        objectID.append(-2)
                 except:
                     # print("H/W",i["params"]["height"], i["params"]["width"])
                     objectListHW.append((x,y,i["params"]["height"], i["params"]["width"],i["params"]["rotation"]))
                     objectHWName.append(i["className"])
+                    try:
+                        objectIDHW.append(i['params']['id'])
+                    except:
+                        objectIDHW.append(-2)
                 # print(globalPos)
                 # print("\n")
             return objectList, objectListHW, objectName, objectHWName
@@ -238,9 +248,9 @@ def __main__():
             topR = (int(-((w/2)*cos(r)+(h/2)*sin(r))*zoomV),int(-((w/2)*sin(r)-(h/2)*cos(r))*zoomV))
             bottomL = (-1*topR[0], -1*topR[1])
             bottomR = (-1*topL[0], -1*topL[1])
-
+            ID = font.render(f'{objectIDHW[objectListHW.index(v)]}', True, (255,0,0))
             pygame.draw.lines(SCREEN,color,False, ((rec.center[0]+topR[0],rec.center[1]+topR[1]), (rec.center[0]+topL[0],rec.center[1]+topL[1]), (rec.center[0]+bottomL[0], rec.center[1]+bottomL[1]), (rec.center[0]+bottomR[0],rec.center[1]+bottomR[1]), (rec.center[0]+topR[0],rec.center[1]+topR[1]), (rec.center[0]+bottomL[0], rec.center[1]+bottomL[1])))
-
+            SCREEN.blit(ID, (rec.center[0]+bottomL[0], rec.center[1]+bottomL[1]))
 
 
         for item in objectList:
@@ -292,12 +302,12 @@ def __main__():
                 # if v[2] == 0:
                 pygame.draw.line(SCREEN,color,[int(zoomV*(vOG[0] + moveV[0])),int((vOG[1]+moveV[1])*zoomV)],[int((v[0] + moveV[0])*zoomV), int((v[1] + moveV[1])*zoomV)])
                 # else: 
-
-
-                
                 # if 
                 
                 vOG = v
+            ID = font.render(f'{objectID[objectList.index(item)]}',True, (0,255,0))
+
+            SCREEN.blit(ID, [int(zoomV*(vOG[0] + moveV[0])),int((vOG[1]+moveV[1])*zoomV)])
         
         keys = pygame.key.get_pressed()
 
